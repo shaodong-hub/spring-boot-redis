@@ -20,7 +20,6 @@ import javax.annotation.Resource;
  */
 
 
-
 @Configuration
 public class ConfigRedisTemplatePerson {
 
