@@ -1,5 +1,6 @@
 package com.github.springbootredis.config;
 
+import com.alibaba.fastjson.support.spring.FastJsonRedisSerializer;
 import com.github.springbootredis.pojo.Person;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -27,11 +28,21 @@ public class ConfigRedisTemplatePerson {
     private RedisConnectionFactory factory;
 
     @Bean("RedisTemplateSerializable")
-    public RedisTemplate<String, Person> getRedisTemplate() {
+    public RedisTemplate<String, Person> getRedisTemplateSerialization() {
         RedisTemplate<String, Person> template = new RedisTemplate<>();
         template.setConnectionFactory(factory);
         template.setKeySerializer(new StringRedisSerializer());
         template.setValueSerializer(new JdkSerializationRedisSerializer());
+        template.afterPropertiesSet();
+        return template;
+    }
+
+    @Bean("RedisTemplateFastJson")
+    public RedisTemplate<String, Person> getRedisTemplate() {
+        RedisTemplate<String, Person> template = new RedisTemplate<>();
+        template.setConnectionFactory(factory);
+        template.setKeySerializer(new StringRedisSerializer());
+        template.setValueSerializer(new FastJsonRedisSerializer<>(Person.class));
         template.afterPropertiesSet();
         return template;
     }

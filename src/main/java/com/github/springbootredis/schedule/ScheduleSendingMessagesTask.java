@@ -1,11 +1,11 @@
 package com.github.springbootredis.schedule;
 
 import com.github.springbootredis.pojo.Person;
-import org.jetbrains.annotations.Contract;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
+import javax.annotation.Resource;
 import java.util.Objects;
 
 /**
@@ -21,12 +21,10 @@ import java.util.Objects;
 @Component
 public class ScheduleSendingMessagesTask {
 
-    private final RedisTemplate<String, Person> redisTemplate;
+    @Resource(name = "RedisTemplateSerializable")
+    private   RedisTemplate<String, Person> redisTemplate;
 
-    @Contract(pure = true)
-    public ScheduleSendingMessagesTask(RedisTemplate<String, Person> redisTemplate) {
-        this.redisTemplate = redisTemplate;
-    }
+
 
     @Scheduled(fixedRate = 1000)
     public void task() {

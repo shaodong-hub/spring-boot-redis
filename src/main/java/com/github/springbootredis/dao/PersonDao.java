@@ -26,7 +26,7 @@ import java.util.stream.Collectors;
 @Repository
 public class PersonDao {
 
-    @Resource
+    @Resource(name = "RedisTemplateSerializable")
     private RedisTemplate<String, Person> template;
 
     public List<Long> getResult(Set<Mapping> set) {
