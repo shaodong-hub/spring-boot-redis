@@ -3,9 +3,7 @@ package com.github.springbootredis.schedule;
 import com.alibaba.fastjson.JSON;
 import com.github.springbootredis.pojo.Person;
 import com.github.springbootredis.repository.PersonPagingAndSortingRepository;
-import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
-import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
 
@@ -20,8 +18,8 @@ import static com.github.springbootredis.common.PersonFactory.getPerson;
  * @since 0.0.1
  */
 
-@Component
-@EnableScheduling
+//@Component
+//@EnableScheduling
 public class SchedulePersonSaveTask {
 
     @Resource

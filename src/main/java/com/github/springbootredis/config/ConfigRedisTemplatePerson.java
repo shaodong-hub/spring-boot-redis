@@ -4,12 +4,9 @@ import com.alibaba.fastjson.support.spring.FastJsonRedisSerializer;
 import com.github.springbootredis.pojo.Person;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.data.redis.connection.RedisConnectionFactory;
-import org.springframework.data.redis.core.RedisTemplate;
-import org.springframework.data.redis.serializer.JdkSerializationRedisSerializer;
-import org.springframework.data.redis.serializer.StringRedisSerializer;
-
-import javax.annotation.Resource;
+import org.springframework.data.redis.connection.ReactiveRedisConnectionFactory;
+import org.springframework.data.redis.core.ReactiveRedisTemplate;
+import org.springframework.data.redis.serializer.RedisSerializationContext;
 
 /**
  * Created in 15:59 2019-04-01
@@ -24,28 +21,24 @@ import javax.annotation.Resource;
 @Configuration
 public class ConfigRedisTemplatePerson {
 
-    @Resource
-    private RedisConnectionFactory factory;
 
-    @Bean("RedisTemplateSerializable")
-    public RedisTemplate<String, Person> getRedisTemplateSerialization() {
-        RedisTemplate<String, Person> template = new RedisTemplate<>();
-        template.setConnectionFactory(factory);
-        template.setKeySerializer(new StringRedisSerializer());
-        template.setValueSerializer(new JdkSerializationRedisSerializer());
-        template.afterPropertiesSet();
-        return template;
+    @Bean
+    public ReactiveRedisTemplate<String, Person> reactiveRedisTemplate(ReactiveRedisConnectionFactory factory) {
+        RedisSerializationContext<String, Person> serializationContext = RedisSerializationContext
+                .<String, Person>newSerializationContext(new FastJsonRedisSerializer<>(Person.class))
+                .build();
+        return new ReactiveRedisTemplate<>(factory, serializationContext);
     }
 
-    @Bean("RedisTemplateFastJson")
-    public RedisTemplate<String, Person> getRedisTemplate() {
-        RedisTemplate<String, Person> template = new RedisTemplate<>();
-        template.setConnectionFactory(factory);
-        template.setKeySerializer(new StringRedisSerializer());
-        template.setValueSerializer(new FastJsonRedisSerializer<>(Person.class));
-        template.afterPropertiesSet();
-        return template;
-    }
 
+//    @Bean
+//    public ReactiveRedisConnectionFactory lettuceConnectionFactory() {
+//        LettuceClientConfiguration clientConfig = LettuceClientConfiguration.builder()
+//                .useSsl().and()
+//                .commandTimeout(Duration.ofSeconds(2))
+//                .shutdownTimeout(Duration.ZERO)
+//                .build();
+//        return new LettuceConnectionFactory(new RedisStandaloneConfiguration("localhost", 6379), clientConfig);
+//    }
 
 }
