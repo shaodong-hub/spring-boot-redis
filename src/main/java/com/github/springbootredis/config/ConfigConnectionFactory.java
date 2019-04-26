@@ -3,6 +3,7 @@ package com.github.springbootredis.config;
 import io.lettuce.core.resource.ClientResources;
 import lombok.SneakyThrows;
 import org.apache.commons.pool2.impl.GenericObjectPoolConfig;
+import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.ObjectProvider;
 import org.springframework.boot.autoconfigure.data.redis.LettuceClientConfigurationBuilderCustomizer;
 import org.springframework.boot.autoconfigure.data.redis.RedisProperties;
@@ -43,18 +44,31 @@ public class ConfigConnectionFactory {
     private ObjectProvider<LettuceClientConfigurationBuilderCustomizer> builderCustomizers;
 
     @Primary
+    @Bean(name = "Factory0")
+    public LettuceConnectionFactory redisConnectionFactory0() {
+        return getLettuceConnectionFactory(0);
+    }
+
+    @Bean(name = "Factory2")
+    public LettuceConnectionFactory redisConnectionFactory2() {
+        return getLettuceConnectionFactory(2);
+    }
+
     @Bean(name = "Factory6")
     public LettuceConnectionFactory redisConnectionFactory6() {
-        LettuceClientConfiguration clientConfig = getLettuceClientConfiguration(clientResources, this.properties.getLettuce().getPool());
-        return createLettuceConnectionFactory(clientConfig, 6);
+        return getLettuceConnectionFactory(6);
     }
 
     @Bean(name = "Factory8")
     public LettuceConnectionFactory redisConnectionFactory8() {
-        LettuceClientConfiguration clientConfig = getLettuceClientConfiguration(clientResources, this.properties.getLettuce().getPool());
-        return createLettuceConnectionFactory(clientConfig, 8);
+        return getLettuceConnectionFactory(8);
     }
 
+    @NotNull
+    private LettuceConnectionFactory getLettuceConnectionFactory(int i) {
+        LettuceClientConfiguration clientConfig = getLettuceClientConfiguration(clientResources, this.properties.getLettuce().getPool());
+        return createLettuceConnectionFactory(clientConfig, i);
+    }
 
     private LettuceConnectionFactory createLettuceConnectionFactory(LettuceClientConfiguration clientConfiguration, int database) {
         return new LettuceConnectionFactory(getStandaloneConfig(database), clientConfiguration);

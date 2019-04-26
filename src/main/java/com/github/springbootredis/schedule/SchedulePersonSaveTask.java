@@ -26,6 +26,9 @@ import static com.github.springbootredis.common.PersonFactory.getPerson;
 @EnableScheduling
 public class SchedulePersonSaveTask {
 
+    @Resource(name = "RedisTemplateFastJson2")
+    private RedisTemplate<String, String> redisTemplate2;
+
     @Resource(name = "RedisTemplateFastJson6")
     private RedisTemplate<String, Person> redisTemplate6;
 
@@ -36,6 +39,7 @@ public class SchedulePersonSaveTask {
     @Scheduled(fixedRate = 1000)
     public void task() {
         Person person = getPerson();
+        redisTemplate2.opsForHash().put("Person", person.getId(), person.toString());
         redisTemplate6.opsForHash().put("Person", person.getId(), person);
         redisTemplate8.opsForHash().put("Person", person.getId(), person);
         log.info(person.toString());

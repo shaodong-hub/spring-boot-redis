@@ -25,11 +25,25 @@ import javax.annotation.Resource;
 @Component
 public class ConfigRedisTemplate {
 
+    @Resource(name = "Factory2")
+    private RedisConnectionFactory connectionFactory2;
+
     @Resource(name = "Factory6")
     private RedisConnectionFactory connectionFactory6;
 
     @Resource(name = "Factory8")
     private RedisConnectionFactory connectionFactory8;
+
+    @Bean("RedisTemplateFastJson2")
+    public RedisTemplate<String, String> getRedisTemplate2() {
+        RedisTemplate<String, String> template = new RedisTemplate<>();
+        template.setConnectionFactory(connectionFactory2);
+        template.setKeySerializer(new StringRedisSerializer());
+        template.setValueSerializer(new StringRedisSerializer());
+        template.afterPropertiesSet();
+        return template;
+    }
+
 
     @Bean("RedisTemplateFastJson6")
     public RedisTemplate<String, Person> getRedisTemplate6() {
