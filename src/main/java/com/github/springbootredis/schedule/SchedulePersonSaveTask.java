@@ -1,4 +1,4 @@
-package com.github.springbootredis.demo;
+package com.github.springbootredis.schedule;
 
 import com.github.springbootredis.pojo.Person;
 import lombok.extern.slf4j.Slf4j;
@@ -24,7 +24,7 @@ import static com.github.springbootredis.common.PersonFactory.getPerson;
 @Slf4j
 @Component
 @EnableScheduling
-public class SchedulePersonSaveTaskDemo {
+public class SchedulePersonSaveTask {
 
     @Resource(name = "RedisTemplateFastJson6")
     private RedisTemplate<String, Person> redisTemplate6;
