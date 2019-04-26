@@ -27,6 +27,9 @@ public class ConfigRedisTemplatePerson {
     @Resource
     private RedisConnectionFactory factory;
 
+    /**
+     * @return RedisTemplate
+     */
     @Bean("RedisTemplateSerializable")
     public RedisTemplate<String, Person> getRedisTemplateSerialization() {
         RedisTemplate<String, Person> template = new RedisTemplate<>();
@@ -37,6 +40,13 @@ public class ConfigRedisTemplatePerson {
         return template;
     }
 
+    /**
+     * 切库使用下面
+     *
+     *  ((LettuceConnectionFactory)factory).setDatabase(1)
+     *
+     * @return RedisTemplate
+     */
     @Bean("RedisTemplateFastJson")
     public RedisTemplate<String, Person> getRedisTemplate() {
         RedisTemplate<String, Person> template = new RedisTemplate<>();

@@ -31,4 +31,4 @@ HELP.md
 .idea
 spring-boot-redis.iml
 
-
+main/resources/application-dev.properties

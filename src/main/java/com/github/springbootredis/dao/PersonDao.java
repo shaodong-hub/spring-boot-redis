@@ -44,4 +44,9 @@ public class PersonDao {
     }
 
 
+    public void clearAll(){
+        template.delete(template.keys("*"));
+    }
+
+
 }
