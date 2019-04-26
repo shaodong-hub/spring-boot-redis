@@ -2,9 +2,7 @@ package com.github.springbootredis.schedule;
 
 import com.github.springbootredis.pojo.Person;
 import org.springframework.data.redis.core.RedisTemplate;
-import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
-import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
 
@@ -20,8 +18,8 @@ import static com.github.springbootredis.common.PersonFactory.getPerson;
  * @version 0.0.1
  * @since 0.0.1
  */
-@Component
-@EnableScheduling
+//@Component
+//@EnableScheduling
 public class ScheduleRedisTemplateSaveTask {
 
     @Resource(name = "RedisTemplateFastJson")

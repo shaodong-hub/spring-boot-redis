@@ -1,7 +1,6 @@
 package com.github.springbootredis.config;
 
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.data.redis.connection.StringRedisConnection;
 import org.springframework.data.redis.core.RedisCallback;
 import org.springframework.data.redis.core.StringRedisTemplate;
@@ -19,7 +18,7 @@ import java.util.concurrent.atomic.AtomicReference;
  */
 
 
-@Configuration
+//@Configuration
 public class ConfigStringRedisConnection {
 
     @Resource

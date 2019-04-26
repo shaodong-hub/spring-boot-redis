@@ -1,14 +1,12 @@
 package com.github.springbootredis.script;
 
 import lombok.SneakyThrows;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.data.redis.connection.StringRedisConnection;
 import org.springframework.data.redis.core.script.RedisScript;
 import org.springframework.scripting.ScriptSource;
 import org.springframework.scripting.support.ResourceScriptSource;
-import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
 import java.io.IOException;
@@ -23,7 +21,7 @@ import java.io.IOException;
  */
 
 
-@Component
+//@Component
 public class ScriptHyperLogLog {
 
     @Resource

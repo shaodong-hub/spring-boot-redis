@@ -3,7 +3,6 @@ package com.github.springbootredis.config;
 import com.github.springbootredis.listener.SubscribeChannelListener;
 import com.github.springbootredis.listener.SubscribePatternListener;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.data.redis.connection.MessageListener;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.data.redis.listener.ChannelTopic;
@@ -20,7 +19,7 @@ import org.springframework.data.redis.listener.RedisMessageListenerContainer;
  * @since 0.0.1
  */
 
-@Configuration
+//@Configuration
 public class ConfigTopic {
 
     /**

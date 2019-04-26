@@ -6,7 +6,6 @@ import org.springframework.data.redis.connection.ReturnType;
 import org.springframework.data.redis.connection.StringRedisConnection;
 import org.springframework.data.redis.core.RedisCallback;
 import org.springframework.data.redis.core.RedisTemplate;
-import org.springframework.stereotype.Repository;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -23,7 +22,7 @@ import java.util.stream.Collectors;
  */
 
 
-@Repository
+//@Repository
 public class PersonDao {
 
     @Resource(name = "RedisTemplateSerializable")
