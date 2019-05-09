@@ -28,6 +28,8 @@ public class ConfigRedisTemplatePerson {
     private RedisConnectionFactory factory;
 
     /**
+     * JDK 序列化方式存储对象
+     *
      * @return RedisTemplate
      */
     @Bean("RedisTemplateSerializable")
@@ -41,9 +43,9 @@ public class ConfigRedisTemplatePerson {
     }
 
     /**
-     * 切库使用下面
+     * 使用 FastJson 方式序列化对象
      *
-     *  ((LettuceConnectionFactory)factory).setDatabase(1)
+     * ((LettuceConnectionFactory)factory).setDatabase(1)
      *
      * @return RedisTemplate
      */

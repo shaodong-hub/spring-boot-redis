@@ -5,6 +5,8 @@ import com.github.springbootredis.pojo.Person;
 import java.util.Random;
 
 /**
+ * 产生 Person对象 的工厂
+ *
  * <p>
  * 创建时间为 18:15 2019-04-12
  * 项目名称 spring-boot-redis

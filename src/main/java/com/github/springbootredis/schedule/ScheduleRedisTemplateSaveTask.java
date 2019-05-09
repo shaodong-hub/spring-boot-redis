@@ -27,6 +27,9 @@ public class ScheduleRedisTemplateSaveTask {
     @Resource(name = "RedisTemplateFastJson")
     private RedisTemplate<String, Person> redisTemplate;
 
+    /**
+     * 每秒向数据库中插入一条数据
+     */
     @Scheduled(fixedRate = 1000)
     public void task() {
         redisTemplate.opsForValue().set(System.currentTimeMillis() + "", getPerson());

@@ -19,4 +19,5 @@ public class SubscribePatternListener implements MessageListener {
     public void onMessage(Message message, byte[] bytes) {
 
     }
+
 }

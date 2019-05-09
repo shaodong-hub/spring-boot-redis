@@ -20,6 +20,12 @@ import org.springframework.data.redis.serializer.JdkSerializationRedisSerializer
 
 public class SubscribeChannelListener implements MessageListener {
 
+    /**
+     * 消息监听器
+     *
+     * @param message 消息
+     * @param bytes   bytes
+     */
     @Override
     public void onMessage(Message message, byte[] bytes) {
         JdkSerializationRedisSerializer serializer = new JdkSerializationRedisSerializer(this.getClass().getClassLoader());
@@ -27,6 +33,5 @@ public class SubscribeChannelListener implements MessageListener {
         System.out.println("Channel:" + new String(message.getChannel()));
         System.out.println("Body   :" + JSON.toJSONString(person));
         System.out.println("bytes  :" + new String(bytes));
-
     }
 }

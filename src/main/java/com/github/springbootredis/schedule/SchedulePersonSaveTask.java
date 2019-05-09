@@ -27,6 +27,9 @@ public class SchedulePersonSaveTask {
     @Resource
     private PersonPagingAndSortingRepository repository;
 
+    /**
+     * 每秒使用 Repository 方式向数据库中插入一条消息
+     */
     @Scheduled(fixedRate = 1000)
     public void task() {
         Person person = getPerson();

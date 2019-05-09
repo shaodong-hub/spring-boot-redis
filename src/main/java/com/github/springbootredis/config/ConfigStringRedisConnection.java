@@ -25,6 +25,11 @@ public class ConfigStringRedisConnection {
     @Resource
     private StringRedisTemplate stringRedisTemplate;
 
+    /**
+     * 获取 StringRedisConnection 对象, 用于 Redis Lua 操作
+     *
+     * @return StringRedisConnection
+     */
     @Bean
     public StringRedisConnection getStringRedisConnection() {
         final AtomicReference<StringRedisConnection> redisConnection = new AtomicReference<>();
@@ -34,7 +39,6 @@ public class ConfigStringRedisConnection {
         });
         return redisConnection.get();
     }
-
 
 
 }

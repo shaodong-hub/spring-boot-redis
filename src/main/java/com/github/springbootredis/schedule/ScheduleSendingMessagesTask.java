@@ -22,10 +22,12 @@ import java.util.Objects;
 public class ScheduleSendingMessagesTask {
 
     @Resource(name = "RedisTemplateSerializable")
-    private   RedisTemplate<String, Person> redisTemplate;
+    private RedisTemplate<String, Person> redisTemplate;
 
 
-
+    /**
+     * 每秒向相关 TOPIC 发送消息
+     */
     @Scheduled(fixedRate = 1000)
     public void task() {
         redisTemplate.convertAndSend("DataTest", getPerson());

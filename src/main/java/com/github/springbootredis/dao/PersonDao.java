@@ -43,7 +43,6 @@ public class PersonDao {
         Long nums = template.delete(keys);
     }
 
-
     public void clearAll(){
         template.delete(template.keys("*"));
     }

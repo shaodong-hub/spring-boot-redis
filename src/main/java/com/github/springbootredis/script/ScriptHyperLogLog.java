@@ -1,7 +1,6 @@
 package com.github.springbootredis.script;
 
 import lombok.SneakyThrows;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.data.redis.connection.StringRedisConnection;
@@ -29,6 +28,11 @@ public class ScriptHyperLogLog {
     @Resource
     private StringRedisConnection connection;
 
+    /**
+     * 使用 RedisScript, LUA 方式访问 Redis
+     *
+     * @return RedisScript
+     */
     @Bean("HyperLogLog")
     @SneakyThrows(IOException.class)
     public RedisScript script() {
