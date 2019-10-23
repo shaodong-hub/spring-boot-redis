@@ -2,7 +2,7 @@ package com.github.springbootredis.schedule;
 
 import com.alibaba.fastjson.JSON;
 import com.github.springbootredis.pojo.Person;
-import com.github.springbootredis.repository.PersonPagingAndSortingRepository;
+import com.github.springbootredis.repository.PersonKeyValueRepository;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
@@ -25,7 +25,7 @@ import static com.github.springbootredis.common.PersonFactory.getPerson;
 public class SchedulePersonSaveTask {
 
     @Resource
-    private PersonPagingAndSortingRepository repository;
+    private PersonKeyValueRepository repository;
 
     /**
      * 每秒使用 Repository 方式向数据库中插入一条消息
@@ -36,7 +36,5 @@ public class SchedulePersonSaveTask {
         System.out.println(JSON.toJSONString(person));
         repository.save(person);
     }
-
-
 
 }

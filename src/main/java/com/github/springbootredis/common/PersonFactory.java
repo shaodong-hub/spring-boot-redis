@@ -1,6 +1,7 @@
 package com.github.springbootredis.common;
 
 import com.github.springbootredis.pojo.Person;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.Random;
 
@@ -19,6 +20,7 @@ import java.util.Random;
 
 public class PersonFactory {
 
+    @NotNull
     public static Person getPerson() {
         Random random = new Random();
         Person person = new Person();

@@ -2,6 +2,7 @@ package com.github.springbootredis.listener;
 
 import com.alibaba.fastjson.JSON;
 import com.github.springbootredis.pojo.Person;
+import org.jetbrains.annotations.NotNull;
 import org.springframework.data.redis.connection.Message;
 import org.springframework.data.redis.connection.MessageListener;
 import org.springframework.data.redis.serializer.JdkSerializationRedisSerializer;
@@ -27,7 +28,7 @@ public class SubscribeChannelListener implements MessageListener {
      * @param bytes   bytes
      */
     @Override
-    public void onMessage(Message message, byte[] bytes) {
+    public void onMessage(@NotNull Message message, byte[] bytes) {
         JdkSerializationRedisSerializer serializer = new JdkSerializationRedisSerializer(this.getClass().getClassLoader());
         Person person = (Person) serializer.deserialize(message.getBody());
         System.out.println("Channel:" + new String(message.getChannel()));

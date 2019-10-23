@@ -33,7 +33,6 @@ public class ScheduleRedisTemplateSaveTask {
     @Scheduled(fixedRate = 1000)
     public void task() {
         redisTemplate.opsForValue().set(System.currentTimeMillis() + "", getPerson());
-
     }
 
 }

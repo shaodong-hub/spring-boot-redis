@@ -1,6 +1,7 @@
 package com.github.springbootredis.schedule;
 
 import com.github.springbootredis.pojo.Person;
+import org.jetbrains.annotations.NotNull;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
@@ -34,6 +35,7 @@ public class ScheduleSendingMessagesTask {
         Objects.requireNonNull(redisTemplate.getClientList()).forEach(one -> System.out.println(one.getAddressPort()));
     }
 
+    @NotNull
     private static Person getPerson() {
         Person person = new Person();
         person.setId("test-id");

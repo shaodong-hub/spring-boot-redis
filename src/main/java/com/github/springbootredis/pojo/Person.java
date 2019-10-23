@@ -28,6 +28,8 @@ import java.io.Serializable;
 @RedisHash("people")
 public class Person implements Serializable {
 
+    private static final long serialVersionUID = -5131273498855124834L;
+
     @Id
     @Indexed
     private String id;

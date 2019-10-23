@@ -1,7 +1,7 @@
 package com.github.springbootredis.repository;
 
 import com.github.springbootredis.pojo.Person;
-import org.springframework.data.repository.PagingAndSortingRepository;
+import org.springframework.data.keyvalue.repository.KeyValueRepository;
 
 /**
  * Created in 16:03 2019-04-01
@@ -13,7 +13,6 @@ import org.springframework.data.repository.PagingAndSortingRepository;
  */
 
 
-public interface PersonPagingAndSortingRepository extends PagingAndSortingRepository<Person, String> {
-
+public interface PersonKeyValueRepository extends KeyValueRepository<Person, String> {
 
 }
