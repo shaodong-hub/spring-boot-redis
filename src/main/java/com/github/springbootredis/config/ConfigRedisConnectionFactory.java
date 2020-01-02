@@ -23,7 +23,7 @@ public class ConfigRedisConnectionFactory {
     public LettuceConnectionFactory redisConnectionFactory() {
         LettuceClientConfiguration clientConfig = LettuceClientConfiguration
                 .builder()
-                .readFrom(ReadFrom.SLAVE_PREFERRED)
+                .readFrom(ReadFrom.REPLICA_PREFERRED)
                 .build();
 
 //        LettucePoolingClientConfiguration.builder().poolConfig()

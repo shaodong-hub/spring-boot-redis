@@ -36,7 +36,7 @@ public class PersonController {
     @Resource
     private PersonKeyValueRepository repository;
 
-    @GetMapping(value = "person", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    @GetMapping(value = "person", produces = MediaType.APPLICATION_JSON_VALUE)
     @Contract(pure = true)
     public Page<Person> getPersons(@PageableDefault(size = 4, page = 0, sort = "name", direction = Sort.Direction.DESC) Pageable pageable) {
         return repository.findAll(pageable);
